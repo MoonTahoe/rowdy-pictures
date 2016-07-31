@@ -27,6 +27,11 @@ module.exports = {
                 }
             },
             {
+                test: /\.json$/,
+                exclude: /(node_modules)/,
+                loader: 'json-loader'
+            },
+            {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader")
             },
