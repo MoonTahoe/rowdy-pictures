@@ -1,0 +1,56 @@
+{
+  "name": "rowdy-pictures",
+  "version": "0.0.0",
+  "description": "A React application that allows users to store pictures of them getting after it!",
+  "main": "index.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint .",
+    "prestart": "webpack",
+    "start": "open http://localhost:3000 & ./node_modules/.bin/httpster -d ./dist/ -p 3000",
+    "dev": "open http://localhost:3000 & ./node_modules/.bin/webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoonTahoe/rowdy-pictures.git"
+  },
+  "keywords": [
+    "React",
+    "tutorial",
+    "pictures",
+    "drag",
+    "and",
+    "drop"
+  ],
+  "author": "Alex Banks <alex@moonhighway.com> (http://www.moonhighway.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MoonTahoe/rowdy-pictures/issues"
+  },
+  "homepage": "https://rawgit.com/MoonTahoe/rowdy-pictures/dist/index.html",
+  "dependencies": {
+    "httpster": "^1.0.3",
+    "node-uuid": "^1.4.7",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "babel-cli": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "eslint": "^3.2.0",
+    "eslint-plugin-react": "^5.2.2",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "json-loader": "^0.5.4",
+    "node-sass": "^3.8.0",
+    "optimize-css-assets-webpack-plugin": "^1.3.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

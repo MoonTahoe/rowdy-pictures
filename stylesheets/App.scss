@@ -1,0 +1,19 @@
+@import "globals";
+
+html,
+body,
+div#react-container,
+div.app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+div.app {
+  background-color: $primary-color;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
