@@ -33,9 +33,20 @@ class App extends Component {
                 <header>
                     <h1>Rowdy Pictures</h1>
                 </header>
+
                 <Display if={!pending}>
                     <PicUploader onDrag={dragging => this.setState({dragging})}
-                                 onDrop={dropState => this.setState({...dropState})}/>
+                                 onDrop={dropState => this.setState({...dropState})}
+                                 onError={error => this.setState({
+                                    errors: [
+                                        ...this.state.errors,
+                                        error
+                                    ]
+                                 })} />
+                </Display>
+
+                <Display if={pending}>
+                    <PicForm {...pending} />
                 </Display>
 
             </div>

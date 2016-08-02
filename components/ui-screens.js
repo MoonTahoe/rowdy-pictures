@@ -1,18 +1,18 @@
 import { PropTypes } from 'react'
 import { Display } from './ui-widgits'
 
-export const PicForm = ({ dataURI, title, size=0}) =>
+export const PicForm = ({ dataURI="", title="[untitled]", size=0}) =>
     <div className="pic-form">
         <h1>Finalize Image</h1>
         <img src={dataURI} alt={title}/>
         <p>{title}</p>
         <p>{size}</p>
-        <button onClick={this.save}>Save Image</button>
+        <button>Save Image</button>
     </div>
 
 PicForm.propTypes = {
-    dataURI: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    dataURI: PropTypes.string,
+    title: PropTypes.string,
     size: PropTypes.number
 }
 
