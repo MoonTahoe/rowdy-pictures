@@ -43,11 +43,16 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin("bundle.min.css"),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            warnings: false,
-            mangle: false
-        }),
+        //new webpack.DefinePlugin({
+        //    "process.env": {
+        //        NODE_ENV: JSON.stringify("production")
+        //    }
+        //}),
+        //new webpack.optimize.UglifyJsPlugin({
+        //    sourceMap: true,
+        //    warnings: false,
+        //    mangle: false
+        //}),
         new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.optimize\.css$/g,
             cssProcessor: require('cssnano'),

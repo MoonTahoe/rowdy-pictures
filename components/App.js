@@ -14,26 +14,27 @@ class App extends Component {
             pending: null,
             errors: []
         }
+        this.save = this.save.bind(this)
     }
 
-    save() {
+    save(img) {
         this.setState({
             pictures: [
                 ...this.state.pictures,
-                this.state.pending
+                img
             ],
             pending: null
         })
     }
 
     render() {
-        const { pending } = this.state
+        const { pending, pictures } = this.state
         return (
             <div className="app">
                 <header>
                     <h1>Rowdy Pictures</h1>
                 </header>
-
+                <Pictures pictures={pictures} />
                 <Display if={!pending}>
                     <PicUploader onDrag={dragging => this.setState({dragging})}
                                  onDrop={dropState => this.setState({...dropState})}
@@ -44,11 +45,10 @@ class App extends Component {
                                     ]
                                  })} />
                 </Display>
-
                 <Display if={pending}>
-                    <PicForm {...pending} />
+                    <PicForm {...pending}
+                             onSave={this.save} />
                 </Display>
-
             </div>
         )
     }

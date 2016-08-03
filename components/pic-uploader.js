@@ -11,59 +11,24 @@ const checkForImage = file =>
             rejects(new Error("Dropped file not an image"))
     )
 
+const readImgFile = (file, callback) => {
+    const fr = new FileReader(file)
+    fr.readAsDataURL(file)
+    fr.onload = () => callback({
+        pending: {
+            dataURI: fr.result,
+            title: file.name,
+            size: file.size
+        }
+    })
+}
 
-//const createReader = (file) => new FileReader(file)
-//
-//const getImageURI = (file, fileReader, callback) =>
-//    fileReader.readAsDataURL(file)
-//        .onload(() => callback(fileReader.results))
-//
-//const serializeFileData = ({ name, size }) =>
-//    results => ({name, size, results})
-//
-//const captureImage = (e, callback) =>
-//    new Promise((resolves, rejects) => {
-//
-//        checkForImage(getFir)
-//
-//    })
-//
-//const captureImage = (e, callback) => {
-//    checkForImage(getFirstFile(e))
-//        .then(
-//            file => getImageURI(file, createReader(file), serializeFileData(file)),
-//            err => callback({error: new Error("Dropped file not an image")})
-//        )
-//}
-
-
-//
-//  TODO: Follow through errors until completion
-//
-
-//
-//  TODO: Follow through files until completion
-//
-
-export const captureImage = e =>
+export const captureDroppedImage = dropEvent =>
     new Promise((resolves, rejects) =>
-        checkForImage(getFirstFile(e)).then(
-            file => {
-                var fr = new FileReader(file)
-                fr.readAsDataURL(file)
-                fr.onload = function () {
-                    resolves({
-                        dragOver: false,
-                        pending: {
-                            dataURI: this.result,
-                            title: file.name,
-                            size: file.size
-                        }
-                    })
-                }
-            },
+        checkForImage(getFirstFile(dropEvent)).then(
+            file => readImgFile(file, data => resolves(data)),
             error => rejects(error)
-    ))
+        ))
 
 export class PicUploader extends Component {
 
@@ -95,7 +60,7 @@ export class PicUploader extends Component {
         const { onDrop, onError } = this.props
         e.preventDefault()
         this.dragUpdate(false)
-        captureImage(e).then(onDrop, onError)
+        captureDroppedImage(e).then(onDrop, onError)
     }
 
     componentDidMount() {
